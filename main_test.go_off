@@ -1,0 +1,12 @@
+package main
+
+func Test(){
+	`Sat Apr 29 03:23:01 UTC 2023
+Sat Apr 29 03:23:01 UTC 2023
+Sat Apr 29 03:23:04 UTC 2023
+Sat Apr 29 03:24:02 UTC 2023
+Sat Apr 29 03:24:02 UTC 2023
+Sat Apr 29 03:24:05 UTC 2023
+Sat Apr 29 03:25:01 UTC 2023
+Sat Apr 29 03:25:01 UTC 2023`
+}
