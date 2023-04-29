@@ -28,17 +28,21 @@ func main() {
 		if len(filePath) == 0 {
 			return errors.Errorf("missing filePath")
 		}
+		lf.Infof("reading the file...")
 		b, err := os.ReadFile(filePath)
 		if err != nil {
 			return errors.WithStack(err)
 		}
+		lf = lf.WithField("megabytes", len(b)/1024/1024)
+		lf.Infof("file is read")
+
 		all, chronological, longestLast := FindFarDates(b, minHoleMinutes, timeFormat, maxItemsToShow)
 		if len(all) == 0 {
 			lf.Warnf("no dates found")
 			return nil
 		}
 		lf = lf.
-			WithField("analyzed-period", fmt.Sprintf("%+v-%+v", all[0].Time, all[len(all)].Time)).
+			WithField("analyzed-period", fmt.Sprintf("%+v-%+v", all[0].Time, all[len(all)-1].Time)).
 			WithField("analyzed-count", len(all))
 		Print(chronological, lf, "chronological", timeFormat)
 		Print(longestLast, lf, "longest", timeFormat)
